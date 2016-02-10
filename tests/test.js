@@ -1,0 +1,206 @@
+/**
+ * Test for all device calls.
+ * Recommended to be run with DEBUG=castv2 to see underlying protocol communication.
+ */
+
+var ChromecastAPI = require('../index.js')
+
+var browser = new ChromecastAPI.Browser()
+
+console.log('Searching for devices')
+
+browser.on('status', function (status) {
+	console.log('Status: ', status)
+})
+
+var media = {
+	url: 'http://cdn8.streamcloud.eu:8080/5hv75a4sc2oax3ptxzmildn56332nyxil3h7ykrnbuvy2du6hzmg5dcuja/video.mp4',
+	cover: {
+		title: 'Testing',
+		url: 'http://stor8.streamcloud.eu:8080/i/01/00785/8539pm2gyo05.jpg'
+	}
+}
+
+browser.on('deviceOn', function (device) {
+	device.play(media, 0, function () {
+
+		console.log('Playing in your chromecast')
+
+		setTimeout(function () {
+			console.log('Lowering volume')
+			device.setVolume(0.25, function (err, newVol) {
+				if (err)
+					console.log("There was an error changing the volume.")
+				else
+					console.log('Volume Changed to: ' + newVol.level)
+			})
+		}, 15000)
+
+		setTimeout(function () {
+			console.log('Muting audio')
+			device.setVolumeMuted(true, function (err, newVol) {
+				if (err)
+					console.log("There was an error muting the volume.")
+				else
+					console.log('NewVol: ', newVol)
+			})
+		}, 18000)
+
+		setTimeout(function () {
+			console.log('Unmuting audio')
+			device.setVolumeMuted(false, function (err, newVol) {
+				if (err)
+					console.log("there was an error muting the volume.")
+				else
+					console.log('NewVol: ', newVol)
+			})
+		}, 19500)
+
+		setTimeout(function () {
+			console.log('Subtitles off')
+			device.subtitlesOff(function (err, status) {
+				if (err)
+					console.log("Error setting subtitles off...")
+				else
+					console.log("Subtitles removed")
+			})
+		}, 20000)
+
+		setTimeout(function () {
+			console.log("Restoring audio")
+			device.setVolume(0.5, function (err, newVol) {
+				if (err)
+					console.log("There was an error changing the volume.")
+				else
+					console.log('Volume Changed to: ' + newVol.level)
+			})
+		}, 21000)
+
+
+		setTimeout(function () {
+			console.log('Subtitles on')
+			device.changeSubtitles(1, function (err, status) {
+				if (err)
+					console.log("Error restoring subtitles...")
+				else
+					console.log("Subtitles restored")
+			})
+		}, 25000)
+
+		setTimeout(function () {
+			console.log('Subtitles on')
+			device.changeSubtitles(1, function (err, status) {
+				if (err)
+					console.log("Error restoring subtitles...")
+				else
+					console.log("Subtitles restored")
+			})
+		}, 25000)
+
+		setTimeout(function () {
+			device.pause(function () {
+				console.log('Paused')
+			})
+		}, 30000)
+
+		setTimeout(function () {
+			device.unpause(function () {
+				console.log('Unpaused')
+			})
+		}, 40000)
+
+		setTimeout(function () {
+			console.log('I ment English subtitles!')
+			device.changeSubtitles(0, function (err, status) {
+				if (err)
+					console.log("Error restoring subtitles...")
+				else
+					console.log("English subtitles restored")
+			})
+		}, 45000)
+
+		setTimeout(function () {
+			console.log('Increasing subtitles size...')
+			device.changeSubtitlesSize(10, function (err, status) {
+				if (err)
+					console.log("Error increasing subtitles size...")
+				else
+					console.log("Subtitles size increased")
+			})
+		}, 46000)
+
+		setTimeout(function () {
+			device.seek(30, function () {
+				console.log('Seeking forward')
+			})
+		}, 50000)
+
+		setTimeout(function () {
+			console.log('Decreasing subtitles size...')
+			device.changeSubtitlesSize(1, function (err, status) {
+				if (err)
+					console.log("Error...")
+				else
+					console.log("Subtitles size decreased")
+			})
+		}, 60000)
+
+		setTimeout(function () {
+			device.pause(function () {
+				console.log('Paused')
+			})
+		}, 70000)
+
+		setTimeout(function () {
+			device.seek(30, function () {
+				console.log('Seeking forward')
+			})
+		}, 80000)
+
+		setTimeout(function () {
+			device.seek(30, function () {
+				console.log('Seeking forward')
+			})
+		}, 85000)
+
+		setTimeout(function () {
+			device.unpause(function () {
+				console.log('Unpaused')
+			})
+		}, 90000)
+
+
+		setTimeout(function () {
+			device.seek(-30, function () {
+				console.log('Seeking backwards')
+			})
+		}, 100000)
+
+		setTimeout(function () {
+			device.seekTo(0, function () {
+				console.log('Seeking back to start')
+			})
+		}, 110000)
+
+		setTimeout(function () {
+			device.seekTo(300, function () {
+				console.log('Seeking to exactly 5 mins')
+			})
+		}, 120000)
+
+		setTimeout(function () {
+			device.getStatus(function (err, status) {
+				device.seekTo(status.media.duration - 100, function () {
+					console.log('Seeking to 100 sec before end')
+				})
+			})
+		}, 130000)
+
+		//Stop sending heartbeat
+		setTimeout(function () {
+			device.stop(function () {
+				console.log('Stopped')
+			})
+		}, 150000)
+	})
+})
