@@ -24,15 +24,9 @@ browser.on('deviceOn', function (device) {
 
 		setTimeout(function () {
 			device.stop(function () {
-				console.log('Stoped')
+				console.log('Stopped')
 			})
 		}, 40000)
-		
-		setTimeout(function () {
-			device.close(function () {
-				console.log('Closed')
-			})
-		}, 50000)
 
 	})
 })
