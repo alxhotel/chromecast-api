@@ -1,7 +1,7 @@
 chromecast-api
 =================
 
-chromecast-api is a javascript client library for googlecast's remote playback protocol that uses DefaultMediaReceiver to play any (compatible) content in the Chromecast.
+chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
 ## Installation
 
