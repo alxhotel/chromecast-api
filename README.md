@@ -1,7 +1,7 @@
 chromecast-api
 =================
 
-chromecast-api is a javascript client library for googlecast's remote playback protocol that uses DefaultMediaReceiver to play any (compatible) content in the Chromecast, it works by wrapping the [node-castv2-client](https://github.com/thibauts/node-castv2-client) module.
+chromecast-api is a javascript client library for googlecast's remote playback protocol that uses DefaultMediaReceiver to play any (compatible) content in the Chromecast.
 
 ## Installation
 
@@ -11,13 +11,16 @@ From npm:
 
 ## Usage
 
-``` javascript
-chromecastapi = require('chromecast-api')
+```js
+var ChromecastAPI = require('chromecast-api')
 
-var browser = new chromecastapi.Browser()
+var browser = new ChromecastAPI.Browser()
 
-browser.on('deviceOn', function(device){
-    device.play('http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4', 0, function(){
+browser.on('deviceOn', function (device) {
+	
+	var urlMedia = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
+
+    device.play(urlMedia, 0, function () {
         console.log('Playing in your chromecast')
 
 		setTimeout(function () {
@@ -25,14 +28,21 @@ browser.on('deviceOn', function(device){
 			device.pause(function () {
 				console.log('Paused')
 			});
-		}, 30000);
+		}, 30000)
 
 		setTimeout(function () {
 			//Stop video
 			device.stop(function () {
 				console.log('Stopped')
 			});
-		}, 40000);
+		}, 40000)
+
+		setTimeout(function () {
+			//Close the streaming
+			device.close(function () {
+				console.log('Closed')
+			});
+		}, 50000)
     })
 })
 
@@ -40,9 +50,9 @@ browser.on('deviceOn', function(device){
 
 ## Subtitles and Cover
 
-To include subtitles and a cover image with the media title, use an Object instead of a string in the *play method*:
+To include subtitles and a cover image, use an Object instead of a string in the *play method*:
 
-``` javascript
+```js
 
 var ChromecastAPI = require('chromecast-api')
 
@@ -82,117 +92,73 @@ var media = {
 }
 
 
-browser.on('deviceOn', function(device){
-	// Starting to play Big Buck Bunny (made in Blender) exactly in the first minute with example subtitles and cover.
-	device.play(media, 0, function(){
-		console.log('Playing in your chromecast!')
+browser.on('deviceOn', function (device) {
+	// Starting to play Big Buck Bunny exactly in the first minute with example subtitles and cover
+	device.play(media, 60, function () {
+		console.log('Playing in your chromecast')
 
-		setTimeout(function(){
-			console.log('subtitles off!')
-			device.subtitlesOff(function(err,status){
-				if(err) console.log("error setting subtitles off...")
-				console.log("subtitles removed.")
+		setTimeout(function () {
+			console.log('Subtitles off')
+			device.subtitlesOff (function(err,status) {
+				if(err) console.log("Error")
+				console.log("Subtitles removed")
 			});
-		}, 20000);
+		}, 20000)
 
-		setTimeout(function(){
-			console.log('subtitles on!')
-			device.changeSubtitles(1, function(err, status){
-				if(err) console.log("error restoring subtitles...")
-				console.log("subtitles restored.")
+		setTimeout(function () {
+			console.log('Subtitles on')
+			device.changeSubtitles(1, function (err, status) {
+				if(err) console.log("Error")
+				console.log("Subtitles restored")
 			});
-		}, 25000);
+		}, 25000)
 
-		setTimeout(function(){
-			console.log('subtitles on!')
-			device.changeSubtitles(1, function(err, status){
-				if(err) console.log("error restoring subtitles...")
-				console.log("subtitles restored.")
+		setTimeout(function () {
+			device.pause(function () {
+				console.log('Paused')
 			});
-		}, 25000);
+		}, 30000)
 
-		setTimeout(function(){
-			device.pause(function(){
-				console.log('Paused!')
+		setTimeout(function () {
+			device.unpause(function () {
+				console.log('Resumed')
 			});
-		}, 30000);
+		}, 40000)
 
-		setTimeout(function(){
-			device.unpause(function(){
-				console.log('unpaused!')
+		setTimeout(function () {
+			console.log('Change subtitles language')
+			device.changeSubtitles(0, function (err, status) {
+				if(err) console.log("Error")
+				console.log("English subtitles restored")
 			});
-		}, 40000);
+		}, 45000)
 
-		setTimeout(function(){
-			console.log('I ment English subtitles!')
-			device.changeSubtitles(0, function(err, status){
-				if(err) console.log("error restoring subtitles...")
-				console.log("English subtitles restored.")
+		setTimeout(function () {
+			console.log('Increase subtitles size')
+			device.changeSubtitlesSize(10, function (err, status) {
+				if(err) console.log("Error")
+				console.log("Subtitles size increased")
 			});
-		}, 45000);
+		}, 50000)
 
-		setTimeout(function(){
-			console.log('Increasing subtitles size...')
-			device.changeSubtitlesSize(10, function(err, status){
-				if(err) console.log("error increasing subtitles size...")
-				console.log("subtitles size increased.")
+		setTimeout(function () {
+			device.seek(30,function () {
+				console.log('Seeked forward')
 			});
-		}, 46000);
+		}, 60000)
 
-		setTimeout(function(){
-			device.seek(30,function(){
-				console.log('seeking forward!')
+		setTimeout(function () {
+			console.log('Decrease subtitles size')
+			device.changeSubtitlesSize(1, function (err, status) {
+				if(err) console.log("Error")
+				console.log("Subtitles size decreased")
 			});
-		}, 50000);
-
-		setTimeout(function(){
-			console.log('decreasing subtitles size...')
-			device.changeSubtitlesSize(1, function(err, status){
-				if(err) console.log("error...")
-				console.log("subtitles size decreased.")
-			});
-		}, 60000);
-
-		setTimeout(function(){
-			device.pause(function(){
-				console.log('Paused!')
-			});
-		}, 70000);
-
-		setTimeout(function(){
-			device.seek(30,function(){
-				console.log('seeking forward!')
-			});
-		}, 80000);
-
-		setTimeout(function(){
-			device.seek(30,function(){
-				console.log('seeking forward!')
-			});
-		}, 85000);
-
-		setTimeout(function(){
-			device.unpause(function(){
-				console.log('unpaused!')
-			});
-		}, 90000);
-
-
-		setTimeout(function(){
-			device.seek(-30,function(){
-				console.log('seeking backwards!')
-			});
-		}, 100000);
-
-
-		setTimeout(function(){
-			device.stop(function(){
-				console.log('Stoped!')
-			});
-		}, 200000);
+		}, 70000)
 
 	})
 }
 
 ```
 
+## Misc
+This is a fork from chromecast-js

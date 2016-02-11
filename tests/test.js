@@ -14,11 +14,35 @@ browser.on('status', function (status) {
 })
 
 var media = {
-	url: 'http://cdn8.streamcloud.eu:8080/5hv75a4sc2oax3ptxzmildn56332nyxil3h7ykrnbuvy2du6hzmg5dcuja/video.mp4',
-	cover: {
-		title: 'Testing',
-		url: 'http://stor8.streamcloud.eu:8080/i/01/00785/8539pm2gyo05.jpg'
-	}
+	url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
+	 subtitles: [{
+        language: 'en-US',
+        url: 'http://carlosguerrero.com/captions_styled.vtt',
+        name: 'English'
+    },
+    {
+        language: 'es-ES',
+        url: 'http://carlosguerrero.com/captions_styled_es.vtt',
+        name: 'Spanish'
+    }
+    ],
+    cover: {
+        title: 'Big Bug Bunny',
+        url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
+    },
+    subtitles_style: {
+          backgroundColor: '#FFFFFFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          foregroundColor: '#000FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          edgeType: 'DROP_SHADOW', // can be: "NONE", "OUTLINE", "DROP_SHADOW", "RAISED", "DEPRESSED"
+          edgeColor: '#AA00FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          fontScale: 1.5, // transforms into "font-size: " + (fontScale*100) +"%"
+          fontStyle: 'BOLD_ITALIC', // can be: "NORMAL", "BOLD", "BOLD_ITALIC", "ITALIC",
+          fontFamily: 'Droid Sans',
+          fontGenericFamily: 'CURSIVE', // can be: "SANS_SERIF", "MONOSPACED_SANS_SERIF", "SERIF", "MONOSPACED_SERIF", "CASUAL", "CURSIVE", "SMALL_CAPITALS",
+          windowColor: '#AA00FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          windowRoundedCornerRadius: 10, // radius in px
+          windowType: 'ROUNDED_CORNERS' // can be: "NONE", "NORMAL", "ROUNDED_CORNERS"
+    }
 }
 
 browser.on('deviceOn', function (device) {
@@ -88,16 +112,6 @@ browser.on('deviceOn', function (device) {
 		}, 25000)
 
 		setTimeout(function () {
-			console.log('Subtitles on')
-			device.changeSubtitles(1, function (err, status) {
-				if (err)
-					console.log("Error restoring subtitles...")
-				else
-					console.log("Subtitles restored")
-			})
-		}, 25000)
-
-		setTimeout(function () {
 			device.pause(function () {
 				console.log('Paused')
 			})
@@ -110,7 +124,7 @@ browser.on('deviceOn', function (device) {
 		}, 40000)
 
 		setTimeout(function () {
-			console.log('I ment English subtitles!')
+			console.log('English subtitles!')
 			device.changeSubtitles(0, function (err, status) {
 				if (err)
 					console.log("Error restoring subtitles...")
@@ -196,11 +210,18 @@ browser.on('deviceOn', function (device) {
 			})
 		}, 130000)
 
-		//Stop sending heartbeat
 		setTimeout(function () {
 			device.stop(function () {
 				console.log('Stopped')
 			})
 		}, 150000)
+		
+		//Stop sending heartbeat
+		setTimeout(function () {
+			device.close(function () {
+				console.log('Closed')
+			})
+		}, 160000)
+		
 	})
 })
