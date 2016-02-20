@@ -1,6 +1,8 @@
 chromecast-api
 =================
 
+[![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
+
 chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
 ## Installation
