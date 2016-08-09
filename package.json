@@ -3,6 +3,9 @@
 	"version": "0.2.4",
 	"description": "Chromecast/Googlecast streaming module all in JS",
 	"main": "index.js",
+	"scripts": {
+		"test": "standard"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/alxhotel/chromecast-api.git"
@@ -32,5 +35,8 @@
 		"debug": "2.2.0",
 		"multicast-dns": "2.2.0",
 		"node-ssdp": "2.7.0"
+	},
+	"devDependencies": {
+		"standard": "latest"
 	}
 }

@@ -1,13 +1,12 @@
 chromecast-api
 =================
 
+[![NPM Version](https://img.shields.io/travis/alxhotel/chromecast-api/master.svg)](https://travis-ci.org/alxhotel/chromecast-api)
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 
 chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
 ## Installation
-
-From npm:
 
 	npm install chromecast-api 
 
@@ -19,7 +18,6 @@ var ChromecastAPI = require('chromecast-api')
 var browser = new ChromecastAPI.Browser()
 
 browser.on('deviceOn', function (device) {
-	
 	var urlMedia = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
 
     device.play(urlMedia, 0, function () {
@@ -63,16 +61,16 @@ var browser = new ChromecastAPI.Browser()
 var media = {
     url : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
     subtitles: [
-	{
-        language: 'en-US',
-        url: 'http://carlosguerrero.com/captions_styled.vtt',
-        name: 'English',
-    },
-    {
-        language: 'es-ES',
-        url: 'http://carlosguerrero.com/captions_styled_es.vtt',
-        name: 'Spanish',
-    }
+		{
+			language: 'en-US',
+			url: 'http://carlosguerrero.com/captions_styled.vtt',
+			name: 'English',
+		},
+		{
+			language: 'es-ES',
+			url: 'http://carlosguerrero.com/captions_styled_es.vtt',
+			name: 'Spanish',
+		}
     ],
     cover: {
         title: 'Big Bug Bunny',
@@ -164,3 +162,5 @@ browser.on('deviceOn', function (device) {
 
 ## Misc
 This is a fork from chromecast-js
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
