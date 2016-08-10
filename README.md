@@ -160,7 +160,7 @@ browser.on('deviceOn', function (device) {
 
 ```
 
-## Misc
-This is a fork from chromecast-js
+## Credit
+This is based on [chromecast-js](https://github.com/guerrerocarlos/chromecast-js) by [@guerrerocarlos](https://github.com/guerrerocarlos)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
