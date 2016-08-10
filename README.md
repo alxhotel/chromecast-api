@@ -1,7 +1,7 @@
 chromecast-api
 =================
 
-[![NPM Version](https://img.shields.io/travis/alxhotel/chromecast-api/master.svg)](https://travis-ci.org/alxhotel/chromecast-api)
+[![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 
 chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
