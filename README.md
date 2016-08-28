@@ -100,14 +100,14 @@ browser.on('deviceOn', function (device) {
         setTimeout(function () {
             device.subtitlesOff(function (err,status) {
                 if (err) console.log('Subtitles off: ERROR')
-                console.log('Subtitles off: SUCCESS')
+                else console.log('Subtitles off: SUCCESS')
             })
         }, 20000)
 
         setTimeout(function () {
             device.changeSubtitles(1, function (err, status) {
                 if (err) console.log("Subtitles restored and in spanish: ERROR")
-                console.log("Subtitles restored and in spanish: SUCCESS")
+                else console.log("Subtitles restored and in spanish: SUCCESS")
             })
         }, 25000)
 
@@ -126,7 +126,7 @@ browser.on('deviceOn', function (device) {
         setTimeout(function () {
             device.changeSubtitles(0, function (err, status) {
                 if (err) console.log("Change to english subtitles: ERROR")
-                console.log("Change to english subtitles: SUCCESS")
+                else console.log("Change to english subtitles: SUCCESS")
             })
         }, 45000)
 
@@ -134,21 +134,21 @@ browser.on('deviceOn', function (device) {
             console.log('Increase subtitles size')
             device.changeSubtitlesSize(2, function (err, status) {
                 if (err) console.log("Increase subtitles: ERROR")
-                console.log("Increase subtitles: SUCCESS")
+                else console.log("Increase subtitles: SUCCESS")
             })
         }, 50000)
 
         setTimeout(function () {
             device.seek(10,function (err) {
                 if (err) console.log('Seek forward: ERROR')
-                console.log('Seek forward: SUCCESS')
+                else console.log('Seek forward: SUCCESS')
             })
         }, 60000)
 
         setTimeout(function () {
             device.changeSubtitlesSize(1.2, function (err, status) {
                 if (err) console.log("Decrease subtitles: ERROR")
-                console.log("Decrease subtitles: SUCCESS")
+                else console.log("Decrease subtitles: SUCCESS")
             })
         }, 70000)
 
