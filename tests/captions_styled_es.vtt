@@ -1,0 +1,66 @@
+WEBVTT
+
+STYLE
+::cue(.myclass) {
+    color: red;
+}
+
+STYLE
+::cue(.bigclass) {
+    font-size: 150%;
+}
+
+STYLE
+::cue(v[voice="Tarzan"]) {
+    color: blue;
+}
+
+STYLE
+::cue(v[voice="Jane"]) {
+    color: green;
+}
+
+00:00:01.000 --> 00:00:05.000
+Estos subtitulos muestran algunas caracteristicas del formato  WebVTT
+
+00:00:06.000 --> 00:00:10.000 line:5%
+Este texto está posicionado en la parte superior del video
+
+00:00:11.000 --> 00:00:15.000 position:5% align:start
+Este texto está posicionado a la izquierda
+
+00:00:16.000 --> 00:00:20.000 position:95% align:end
+y este a la derecha
+
+00:00:21.000 --> 00:00:25.000 size:33%
+Este solo ocupa el 33% y por eso tiene varias lineas
+
+00:00:26.000 --> 00:00:30.000
+Este tiene texto en <b>negrita</b>
+
+00:00:31.000 --> 00:00:35.000
+Este contiene <i>cursiva</i>
+
+00:00:36.000 --> 00:00:40.000
+Este contiene <u>subrallado</u>
+
+00:00:41.000 --> 00:00:45.000
+Este contiene <b><i><u>todos a la vez</u></i></b>.
+
+00:00:46.000 --> 00:00:50.000
+<c.myclass>Este texto contiene la clase "myclass". 
+Los navegadores que soporten ::cue CSS deberían hacerlo rojo.</c>
+
+00:00:51.000 --> 00:00:55.000
+Este siguiente texto tiene dos voces.
+Tarzan está en azul y Jane en verde.
+
+00:00:56.000 --> 00:01:00.000
+<v Tarzan>Yo Tarzan...
+<v Jane>¡Entonces yo soy Jane!
+
+00:01:01.000 --> 00:01:05.000
+<c.bigclass>Usando CSS, esta fuente debería ser 150% más grande.</c>
+
+00:01:06.000 --> 00:01:10.000
+¡Eso es todo!That's it! Por ahora...

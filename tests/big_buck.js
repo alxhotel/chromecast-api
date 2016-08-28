@@ -7,13 +7,13 @@ var browser = new ChromecastAPI.Browser()
 console.log('Searching for devices')
 
 browser.on('deviceOn', function (device) {
-  if (devices.indexOf(device.host) >= 0) {
-    return console.log('Also found this chromecast: %s', device.host)
+  if (!devices[device.host]) {
+    devices[device.host] = device
+    return console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
   }
-  devices.push(device.host)
 
   device.play('http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4', 60, function () {
-    console.log('Playing in your chromecast: %s', device.config.name)
+    console.log('Playing in chromecast: ' + device.config.name)
 
     setTimeout(function () {
       device.pause(function () {

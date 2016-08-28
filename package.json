@@ -1,7 +1,7 @@
 {
 	"name": "chromecast-api",
 	"version": "0.2.4",
-	"description": "Chromecast/Googlecast streaming module all in JS",
+	"description": "Chromecast streaming module all in JS",
 	"main": "index.js",
 	"scripts": {
 		"test": "standard"
@@ -34,7 +34,8 @@
 		"castv2-client": "1.1.1",
 		"debug": "2.2.0",
 		"multicast-dns": "2.2.0",
-		"node-ssdp": "2.7.0"
+		"node-ssdp": "2.7.0",
+		"inherits": "^2.0.1"
 	},
 	"devDependencies": {
 		"standard": "latest"

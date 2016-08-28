@@ -27,22 +27,22 @@ browser.on('deviceOn', function (device) {
 			//Pause the video
 			device.pause(function () {
 				console.log('Paused')
-			});
-		}, 30000)
+			})
+		}, 20000)
 
 		setTimeout(function () {
 			//Stop video
 			device.stop(function () {
 				console.log('Stopped')
-			});
-		}, 40000)
+			})
+		}, 30000)
 
 		setTimeout(function () {
 			//Close the streaming
 			device.close(function () {
 				console.log('Closed')
-			});
-		}, 50000)
+			})
+		}, 40000)
     })
 })
 
@@ -61,102 +61,99 @@ var browser = new ChromecastAPI.Browser()
 var media = {
     url : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
     subtitles: [
-		{
-			language: 'en-US',
-			url: 'http://carlosguerrero.com/captions_styled.vtt',
-			name: 'English',
-		},
-		{
-			language: 'es-ES',
-			url: 'http://carlosguerrero.com/captions_styled_es.vtt',
-			name: 'Spanish',
-		}
+        {
+            language: 'en-US',
+            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled.vtt',
+            name: 'English',
+        },
+        {
+            language: 'es-ES',
+            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled_es.vtt',
+            name: 'Spanish',
+        }
     ],
     cover: {
         title: 'Big Bug Bunny',
         url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
     },
     subtitles_style: { 
-          backgroundColor: '#FFFFFFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
-          foregroundColor: '#000FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
-          edgeType: 'DROP_SHADOW', // can be: "NONE", "OUTLINE", "DROP_SHADOW", "RAISED", "DEPRESSED"
-          edgeColor: '#AA00FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
-          fontScale: 1.5, // transforms into "font-size: " + (fontScale*100) +"%"
-          fontStyle: 'BOLD_ITALIC', // can be: "NORMAL", "BOLD", "BOLD_ITALIC", "ITALIC",
+          backgroundColor: '#FFFFFF00', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          foregroundColor: '#FFFFFFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          edgeType: 'OUTLINE', // can be: "NONE", "OUTLINE", "DROP_SHADOW", "RAISED", "DEPRESSED"
+          edgeColor: '#000000FF', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          fontScale: 1.2, // transforms into "font-size: " + (fontScale*100) +"%"
+          fontStyle: 'BOLD', // can be: "NORMAL", "BOLD", "BOLD_ITALIC", "ITALIC",
           fontFamily: 'Droid Sans',
-          fontGenericFamily: 'CURSIVE', // can be: "SANS_SERIF", "MONOSPACED_SANS_SERIF", "SERIF", "MONOSPACED_SERIF", "CASUAL", "CURSIVE", "SMALL_CAPITALS",
-          windowColor: '#AA00FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
-          windowRoundedCornerRadius: 10, // radius in px
-          windowType: 'ROUNDED_CORNERS' // can be: "NONE", "NORMAL", "ROUNDED_CORNERS"
+          fontGenericFamily: 'SANS_SERIF', // can be: "SANS_SERIF", "MONOSPACED_SANS_SERIF", "SERIF", "MONOSPACED_SERIF", "CASUAL", "CURSIVE", "SMALL_CAPITALS",
+          //windowColor: '#00000000', // see http://dev.w3.org/csswg/css-color/#hex-notation
+          //windowRoundedCornerRadius: 10, // radius in px
+          //windowType: 'ROUNDED_CORNERS' // can be: "NONE", "NORMAL", "ROUNDED_CORNERS"
     }
 }
 
-
 browser.on('deviceOn', function (device) {
-	// Starting to play Big Buck Bunny exactly in the first minute with example subtitles and cover
-	device.play(media, 60, function () {
-		console.log('Playing in your chromecast')
 
-		setTimeout(function () {
-			console.log('Subtitles off')
-			device.subtitlesOff (function(err,status) {
-				if(err) console.log("Error")
-				console.log("Subtitles removed")
-			});
-		}, 20000)
+    // Starting to play Big Buck Bunny exactly at second #0 with example subtitles and cover
+    device.play(media, 0, function () {
+        console.log('Playing in your chromecast')
 
-		setTimeout(function () {
-			console.log('Subtitles on')
-			device.changeSubtitles(1, function (err, status) {
-				if(err) console.log("Error")
-				console.log("Subtitles restored")
-			});
-		}, 25000)
+        setTimeout(function () {
+            device.subtitlesOff(function (err,status) {
+                if (err) console.log('Subtitles off: ERROR')
+                console.log('Subtitles off: SUCCESS')
+            })
+        }, 20000)
 
-		setTimeout(function () {
-			device.pause(function () {
-				console.log('Paused')
-			});
-		}, 30000)
+        setTimeout(function () {
+            device.changeSubtitles(1, function (err, status) {
+                if (err) console.log("Subtitles restored and in spanish: ERROR")
+                console.log("Subtitles restored and in spanish: SUCCESS")
+            })
+        }, 25000)
 
-		setTimeout(function () {
-			device.unpause(function () {
-				console.log('Resumed')
-			});
-		}, 40000)
+        setTimeout(function () {
+            device.pause(function () {
+                console.log('Paused: SUCCESS')
+            })
+        }, 30000)
 
-		setTimeout(function () {
-			console.log('Change subtitles language')
-			device.changeSubtitles(0, function (err, status) {
-				if(err) console.log("Error")
-				console.log("English subtitles restored")
-			});
-		}, 45000)
+        setTimeout(function () {
+            device.unpause(function () {
+                console.log('Resumed: SUCCESS')
+            })
+        }, 40000)
 
-		setTimeout(function () {
-			console.log('Increase subtitles size')
-			device.changeSubtitlesSize(10, function (err, status) {
-				if(err) console.log("Error")
-				console.log("Subtitles size increased")
-			});
-		}, 50000)
+        setTimeout(function () {
+            device.changeSubtitles(0, function (err, status) {
+                if (err) console.log("Change to english subtitles: ERROR")
+                console.log("Change to english subtitles: SUCCESS")
+            })
+        }, 45000)
 
-		setTimeout(function () {
-			device.seek(30,function () {
-				console.log('Seeked forward')
-			});
-		}, 60000)
+        setTimeout(function () {
+            console.log('Increase subtitles size')
+            device.changeSubtitlesSize(2, function (err, status) {
+                if (err) console.log("Increase subtitles: ERROR")
+                console.log("Increase subtitles: SUCCESS")
+            })
+        }, 50000)
 
-		setTimeout(function () {
-			console.log('Decrease subtitles size')
-			device.changeSubtitlesSize(1, function (err, status) {
-				if(err) console.log("Error")
-				console.log("Subtitles size decreased")
-			});
-		}, 70000)
+        setTimeout(function () {
+            device.seek(10,function (err) {
+                if (err) console.log('Seek forward: ERROR')
+                console.log('Seek forward: SUCCESS')
+            })
+        }, 60000)
 
-	})
-}
+        setTimeout(function () {
+            device.changeSubtitlesSize(1.2, function (err, status) {
+                if (err) console.log("Decrease subtitles: ERROR")
+                console.log("Decrease subtitles: SUCCESS")
+            })
+        }, 70000)
+
+    })
+})
 
 ```
 
