@@ -31,10 +31,10 @@
 	},
 	"homepage": "https://github.com/alxhotel/chromecast-api",
 	"dependencies": {
-		"castv2-client": "1.1.1",
-		"debug": "2.2.0",
-		"multicast-dns": "2.2.0",
-		"node-ssdp": "2.7.0",
+		"castv2-client": "1.2.0",
+		"debug": "3.1.0",
+		"multicast-dns": "7.0.0",
+		"node-ssdp": "3.2.5",
 		"inherits": "^2.0.1"
 	},
 	"devDependencies": {
