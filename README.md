@@ -1,6 +1,8 @@
 chromecast-api
 =================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alxhotel/chromecast-api.svg)](https://greenkeeper.io/)
+
 [![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 
