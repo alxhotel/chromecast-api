@@ -9,7 +9,9 @@ chromecast-api is a javascript client library for googlecast's remote playback p
 
 ## Installation
 
-	npm install chromecast-api 
+```sh
+npm install chromecast-api 
+```
 
 ## Usage
 
@@ -64,18 +66,18 @@ var media = {
   subtitles: [
     {
       language: 'en-US',
-      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled.vtt',
+      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled.vtt',
       name: 'English',
     },
     {
       language: 'es-ES',
-      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled_es.vtt',
+      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled_es.vtt',
       name: 'Spanish',
     }
   ],
   cover: {
-      title: 'Big Bug Bunny',
-      url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
+    title: 'Big Bug Bunny',
+    url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg'
   },
   subtitles_style: {
     backgroundColor: '#FFFFFF00', // see http://dev.w3.org/csswg/css-color/#hex-notation

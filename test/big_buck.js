@@ -9,7 +9,7 @@ console.log('Searching for devices')
 browser.on('deviceOn', function (device) {
   if (!devices[device.host]) {
     devices[device.host] = device
-    return console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
+    console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
   }
 
   device.play('http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4', 60, function () {
@@ -26,5 +26,10 @@ browser.on('deviceOn', function (device) {
         console.log('Stopped')
       })
     }, 40000)
+    setTimeout(function () {
+      device.close(function () {
+        console.log('Closed')
+      })
+    }, 45000)
   })
 })

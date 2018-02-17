@@ -18,12 +18,12 @@ var media = {
   subtitles: [
     {
       language: 'en-US',
-      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled.vtt',
+      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled.vtt',
       name: 'English'
     },
     {
       language: 'es-ES',
-      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled_es.vtt',
+      url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled_es.vtt',
       name: 'Spanish'
     }
   ],
