@@ -12,13 +12,6 @@ browser.on('deviceOn', function (device) {
     console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
   }
 
-setTimeout(function () {
-      device.close(function () {
-        console.log('Closed')
-      })
-    }, 2000)
-
-return
   device.play('http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4', 60, function () {
     console.log('Playing in chromecast: ' + device.config.name)
 
