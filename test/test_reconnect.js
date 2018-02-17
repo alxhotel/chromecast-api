@@ -15,7 +15,9 @@ var media = {
   }
 }
 
-function testCast (device, media) {
+console.log('Searching for devices')
+
+browser.on('deviceOn', function (device) {
   device.play(media, 0, function () {
     console.log('Playing in your chromecast')
 
@@ -23,6 +25,7 @@ function testCast (device, media) {
       device.stop(function (err, status) {
         if (err) console.log('Error', err)
         console.log('Device stopped')
+
         setTimeout(function () {
           device.play(media, 0, function () {
             console.log('Reconnected and playing :)')
@@ -31,10 +34,4 @@ function testCast (device, media) {
       })
     }, 10000)
   })
-}
-
-console.log('Searching for devices')
-
-browser.on('deviceOn', function (device) {
-  testCast(device, media)
 })

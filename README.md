@@ -1,8 +1,6 @@
 chromecast-api
 =================
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/alxhotel/chromecast-api.svg)](https://greenkeeper.io/)
-
 [![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 
@@ -10,7 +8,9 @@ chromecast-api is a javascript client library for googlecast's remote playback p
 
 ## Installation
 
-	npm install chromecast-api 
+```sh
+npm install chromecast-api 
+```
 
 ## Usage
 
@@ -65,12 +65,12 @@ var media = {
     subtitles: [
         {
             language: 'en-US',
-            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled.vtt',
+            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled.vtt',
             name: 'English',
         },
         {
             language: 'es-ES',
-            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/tests/captions_styled_es.vtt',
+            url: 'https://raw.githubusercontent.com/alxhotel/chromecast-api/master/test/captions_styled_es.vtt',
             name: 'Spanish',
         }
     ],
