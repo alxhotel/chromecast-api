@@ -35,7 +35,7 @@
 	"dependencies": {
 		"castv2-client": "1.2.0",
 		"debug": "3.1.0",
-		"multicast-dns": "7.1.1",
+		"multicast-dns": "7.2.0",
 		"node-ssdp": "4.0.0",
 		"inherits": "^2.0.1"
 	},
