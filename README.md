@@ -15,6 +15,8 @@ npm install chromecast-api
 
 ## Usage
 
+Soported media formats: mp4, jpg and png files.
+
 ```js
 var ChromecastAPI = require('chromecast-api')
 
