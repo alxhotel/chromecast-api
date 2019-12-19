@@ -7,6 +7,8 @@ chromecast-api
 
 chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
+Supported media formats: MP4, JPG and PNG files.
+
 ## Installation
 
 ```sh
@@ -14,8 +16,6 @@ npm install chromecast-api
 ```
 
 ## Usage
-
-Soported media formats: mp4, jpg and png files.
 
 ```js
 var ChromecastAPI = require('chromecast-api')
