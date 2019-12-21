@@ -113,6 +113,10 @@ Use this function to play any media in the chromecast device. Make sure `mediaUR
 }
 ```
 
+#### `device.on('finished', callback)`
+
+Event emitted when the media (audio or video) has finished.
+
 #### `device.subtitlesOff(callback)`
 
 Turn the subtitles off.
