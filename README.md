@@ -7,8 +7,6 @@ chromecast-api
 
 **chromecast-api** is a NodeJS module for Googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
-Supported media formats: MP4, JPG and PNG files.
-
 ## Installation
 
 ```sh
@@ -38,7 +36,7 @@ To include subtitles and a cover image, use an Object instead of a string in the
 ```js
 const ChromecastAPI = require('chromecast-api')
 
-var media = {
+const media = {
   url : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
   subtitles: [
     {
