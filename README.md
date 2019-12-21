@@ -93,9 +93,9 @@ With the `Device` object you can now interact with your Chromecast.
 This is an example of a attributes of `device`:
 ```
 {
-  name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local',
-  friendlyName: 'Bobby',
-  host: '192.168.1.10'
+  name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local', // Unique identifier
+  friendlyName: 'Bobby', // The name you gave to your chromecast
+  host: '192.168.1.10' // Local IP address
 }
 ```
 
