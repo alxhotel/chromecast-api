@@ -1,35 +1,36 @@
 var ChromecastAPI = require('../index.js')
 
-var devices = []
-
-var browser = new ChromecastAPI.Browser()
+var client = new ChromecastAPI()
 
 console.log('Searching for devices')
 
-browser.on('deviceOn', function (device) {
-  if (!devices[device.host]) {
-    devices[device.host] = device
-    console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
-  }
+client.findDevice(function (device) {
+  console.log('Found chromecast: `' + device.friendlyName + '` at ' + device.host)
 
   device.play('http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4', 60, function () {
-    console.log('Playing in chromecast: ' + device.config.name)
+    console.log('Playing in chromecast: ' + device.name)
 
     setTimeout(function () {
       device.pause(function () {
         console.log('Paused')
       })
-    }, 30000)
+    }, 20000)
 
     setTimeout(function () {
       device.stop(function () {
         console.log('Stopped')
       })
-    }, 40000)
+    }, 30000)
+
     setTimeout(function () {
       device.close(function () {
         console.log('Closed')
+
+        // Destroy client
+        client.destroy(function () {
+          console.log('Client destroyed')
+        })
       })
-    }, 45000)
+    }, 35000)
   })
 })

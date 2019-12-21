@@ -1,6 +1,6 @@
 {
 	"name": "chromecast-api",
-	"version": "0.2.5",
+	"version": "0.3.0",
 	"description": "Chromecast streaming module all in JS",
 	"main": "index.js",
 	"scripts": {
@@ -13,29 +13,30 @@
 	"keywords": [
 		"chromecast",
 		"googlecast",
+		"cast",
+		"media",
+		"device",
 		"stream",
 		"streaming",
-		"torrentv"
+		"torrent"
 	],
 	"author": {
 		"name": "Alex",
 		"email": "alxmorais8@msn.com"
 	},
-	"contributors": [{
-		"name": "Carlos Guerrero",
-		"email": "guerrerocarlos@gmail.com"
-	}],
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/alxhotel/chromecast-api/issues"
 	},
 	"homepage": "https://github.com/alxhotel/chromecast-api",
 	"dependencies": {
 		"castv2-client": "1.2.0",
-		"debug": "3.1.0",
-		"multicast-dns": "7.0.0",
-		"node-ssdp": "3.3.0",
-		"inherits": "^2.0.1"
+		"debug": "^3.1.0",
+		"multicast-dns": "^6.0.1",
+		"node-ssdp": "^3.3.0",
+		"xml2js": "^0.4.23",
+		"dns-txt": "^2.0.2",
+		"mime": "^2.3.1"
 	},
 	"devDependencies": {
 		"standard": "latest"

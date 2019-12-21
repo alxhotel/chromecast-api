@@ -5,7 +5,7 @@
 
 var ChromecastAPI = require('../index.js')
 
-var browser = new ChromecastAPI.Browser()
+var client = new ChromecastAPI()
 
 var media = {
   url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
@@ -17,7 +17,7 @@ var media = {
 
 console.log('Searching for devices')
 
-browser.on('deviceOn', function (device) {
+client.findDevice(function (device) {
   device.play(media, 0, function () {
     console.log('Playing in your chromecast')
 

@@ -1,17 +1,10 @@
 /**
  * Test for all device calls.
- * Recommended to be run with DEBUG=castv2 to see underlying protocol communication.
  */
 
 var ChromecastAPI = require('../index.js')
 
-var browser = new ChromecastAPI.Browser()
-
-console.log('Searching for devices')
-
-browser.on('status', function (status) {
-  console.log('Status: ', status)
-})
+var client = new ChromecastAPI()
 
 var media = {
   url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
@@ -46,8 +39,12 @@ var media = {
   }
 }
 
-browser.on('deviceOn', function (device) {
-  device.play(media, 0, function () {
+console.log('Searching for devices')
+
+client.findDevice(function (device) {
+  device.play(media, function (err) {
+    if (err) return console.log('Error when trying to play media')
+
     console.log('Playing in your chromecast')
 
     setTimeout(function () {
@@ -228,6 +225,11 @@ browser.on('deviceOn', function (device) {
     setTimeout(function () {
       device.close(function () {
         console.log('Closed')
+
+        // Destroy client
+        client.destroy(function () {
+          console.log('Client destroyed')
+        })
       })
     }, 160000)
   })
