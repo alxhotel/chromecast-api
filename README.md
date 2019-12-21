@@ -91,11 +91,11 @@ Listen for new devices by passing `callback(device)` in the callback parameter.
 With the `Device` object you can now interact with your Chromecast.
 
 This is an example of a attributes of `device`:
-```json
+```
 {
-  name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local', // Unique identifier
-  friendlyName: 'Bobby', // The name you gave to your chromecast
-  host: '192.168.1.10' // Local IP address
+  name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local',
+  friendlyName: 'Bobby',
+  host: '192.168.1.10'
 }
 ```
 
@@ -107,9 +107,9 @@ Trigger the mDNS and SSDP search again. Warning: the `device` event will trigger
 
 Use this function to play any media in the chromecast device. Make sure `mediaURL` is accessible by the chromecast.
 
-```json
+```
 {
-  seconds: 0,
+  seconds: 0
 }
 ```
 
