@@ -153,6 +153,11 @@ Change the subtitles by passing the index of the subtitle you want based on the 
 
 Choose the subtitles font size with `fontSize`. The default is `1.0`.
 
+## Additional information
+
+* Supported Media: https://developers.google.com/cast/docs/media
+* Receiver Apps: https://developers.google.com/cast/docs/receiver_apps
+
 ## License
 
 MIT. Copyright (c) [Alex](https://github.com/alxhotel)
