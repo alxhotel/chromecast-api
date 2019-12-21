@@ -1,3 +1,3 @@
 /* global module */
 
-module.exports = require('./lib/Browser.js')
+module.exports = require('./lib/client.js')

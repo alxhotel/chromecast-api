@@ -1,23 +1,20 @@
-var ChromecastAPI = require('../index.js')
+const ChromecastAPI = require('../index.js')
 
-var devices = []
-
-var browser = new ChromecastAPI.Browser()
+var client = new ChromecastAPI()
 
 console.log('Searching for devices')
 
-browser.on('deviceOn', function (device) {
-  if (!devices[device.host]) {
-    devices[device.host] = device
-    console.log('Found chromecast: `' + device.config.name + '` at ' + device.host)
-  }
+client.on('device', function (device) {
+  console.log('Found chromecast: `' + device.friendlyName + '` at ' + device.host)
 
-  device.play('https://2.img-dpreview.com/files/p/sample_galleries/6361863532/1584980320.jpg', 0, function () {
-    console.log('Playing in chromecast: ' + device.config.name)
+  device.play('https://2.img-dpreview.com/files/p/sample_galleries/6361863532/1584980320.jpg', function () {
+    console.log('Playing in chromecast: ' + device.friendlyName)
 
     setTimeout(function () {
       device.close(function () {
         console.log('Closed')
+
+        client.destroy()
       })
     }, 10000)
   })

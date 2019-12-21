@@ -5,7 +5,7 @@ chromecast-api
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 [![Standard - Javascript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-chromecast-api is a javascript client library for googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
+**chromecast-api** is a NodeJS module for Googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
 
 Supported media formats: MP4, JPG and PNG files.
 
@@ -18,50 +18,25 @@ npm install chromecast-api
 ## Usage
 
 ```js
-var ChromecastAPI = require('chromecast-api')
+const ChromecastAPI = require('chromecast-api')
 
-var browser = new ChromecastAPI.Browser()
+const client = new ChromecastAPI()
 
-browser.on('deviceOn', function (device) {
-  var urlMedia = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
+client.on('device', function (device) {
+  var mediaURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4';
 
-  device.play(urlMedia, 0, function () {
-    console.log('Playing in your chromecast')
-
-      setTimeout(function () {
-        //Pause the video
-        device.pause(function () {
-          console.log('Paused')
-        })
-      }, 20000)
-
-      setTimeout(function () {
-        //Stop video
-        device.stop(function () {
-          console.log('Stopped')
-        })
-      }, 30000)
-
-      setTimeout(function () {
-        //Close the streaming
-          device.close(function () {
-            console.log('Closed')
-          })
-      }, 40000)
+  device.play(mediaURL, function (err) {
+    if (!err) console.log('Playing in your chromecast')
   })
 })
-
 ```
 
 ## Subtitles and Cover
 
-To include subtitles and a cover image, use an Object instead of a string in the *play method*:
+To include subtitles and a cover image, use an Object instead of a string in the function `play(mediaObject)`:
 
 ```js
-
-var ChromecastAPI = require('chromecast-api')
-
-var browser = new ChromecastAPI.Browser()
+const ChromecastAPI = require('chromecast-api')
 
 var media = {
   url : 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
@@ -90,77 +65,97 @@ var media = {
     fontStyle: 'BOLD', // can be: "NORMAL", "BOLD", "BOLD_ITALIC", "ITALIC",
     fontFamily: 'Droid Sans',
     fontGenericFamily: 'SANS_SERIF', // can be: "SANS_SERIF", "MONOSPACED_SANS_SERIF", "SERIF", "MONOSPACED_SERIF", "CASUAL", "CURSIVE", "SMALL_CAPITALS",
-    //windowColor: '#00000000', // see http://dev.w3.org/csswg/css-color/#hex-notation
+    //windowColor: '#AA00FFFF', // see http://dev.w3.org/csswg/css-color/#hex-notation
     //windowRoundedCornerRadius: 10, // radius in px
     //windowType: 'ROUNDED_CORNERS' // can be: "NONE", "NORMAL", "ROUNDED_CORNERS"
   }
 }
 
-browser.on('deviceOn', function (device) {
+const client = new ChromecastAPI()
 
-  // Starting to play Big Buck Bunny exactly at second #0 with example subtitles and cover
-  device.play(media, 0, function () {
-    console.log('Playing in your chromecast')
-
-      setTimeout(function () {
-        device.subtitlesOff(function (err,status) {
-          if (err) console.log('Subtitles off: ERROR')
-            else console.log('Subtitles off: SUCCESS')
-        })
-      }, 20000)
-
-      setTimeout(function () {
-        device.changeSubtitles(1, function (err, status) {
-          if (err) console.log("Subtitles restored and in spanish: ERROR")
-          else console.log("Subtitles restored and in spanish: SUCCESS")
-        })
-      }, 25000)
-
-      setTimeout(function () {
-        device.pause(function () {
-          console.log('Paused: SUCCESS')
-        })
-      }, 30000)
-
-      setTimeout(function () {
-        device.unpause(function () {
-          console.log('Resumed: SUCCESS')
-        })
-      }, 40000)
-
-      setTimeout(function () {
-        device.changeSubtitles(0, function (err, status) {
-          if (err) console.log("Change to english subtitles: ERROR")
-          else console.log("Change to english subtitles: SUCCESS")
-        })
-      }, 45000)
-
-      setTimeout(function () {
-        console.log('Increase subtitles size')
-        device.changeSubtitlesSize(2, function (err, status) {
-          if (err) console.log("Increase subtitles: ERROR")
-          else console.log("Increase subtitles: SUCCESS")
-        })
-      }, 50000)
-
-      setTimeout(function () {
-        device.seek(10,function (err) {
-          if (err) console.log('Seek forward: ERROR')
-          else console.log('Seek forward: SUCCESS')
-        })
-      }, 60000)
-
-      setTimeout(function () {
-        device.changeSubtitlesSize(1.2, function (err, status) {
-          if (err) console.log("Decrease subtitles: ERROR")
-          else console.log("Decrease subtitles: SUCCESS")
-        })
-      }, 70000)
-
+client.on('device', function (device) {
+  device.play(media, function (err) {
+    if (!err) console.log('Playing in your chromecast')
   })
-})
-
+}
 ```
 
-## Acknowledgement
-This is based on [chromecast-js](https://github.com/guerrerocarlos/chromecast-js) by [@guerrerocarlos](https://github.com/guerrerocarlos)
+## API
+
+#### `const client = new ChromecastAPI()`
+
+Initialize the client to start searching for chromecast devices.
+
+#### `client.on('device', callback)`
+
+Listen for new devices by passing `callback(device)` in the callback parameter.
+
+With the `Device` object you can now interact with your Chromecast.
+
+This is an example of a attributes of `device`:
+```json
+{
+  name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local', // Unique identifier
+  friendlyName: 'Bobby', // The name you gave to your chromecast
+  host: '192.168.1.10' // Local IP address
+}
+```
+
+#### `client.update()`
+
+Trigger the mDNS and SSDP search again. Warning: the `device` event will trigger again (it might return the same device).
+
+#### `device.play(mediaURL [, opts], callback)`
+
+Use this function to play any media in the chromecast device. Make sure `mediaURL` is accessible by the chromecast.
+
+```json
+{
+  seconds: 0,
+}
+```
+
+#### `device.subtitlesOff(callback)`
+
+Turn the subtitles off.
+
+#### `device.pause(callback)`
+
+Pause the media.
+
+#### `device.resume(callback)`
+
+Resume the media.
+
+#### `device.stop(callback)`
+
+Stop playing the media.
+
+#### `device.close(callback)`
+
+Close the connection with the device.
+
+#### `device.seek(seconds, callback)`
+
+Seekk forward `seconds` in time.
+
+#### `device.seekTo(specificTime, callback)`
+
+Seek to the `specificTime` in seconds.
+
+#### `device.setVolume(level, callback)`
+
+Set the volume to a specific `level` (from 0.0 to 1.0).
+
+#### `device.changeSubtitles(index, callback)`
+
+Change the subtitles by passing the index of the subtitle you want based on the list you passed before.
+
+#### `device.changeSubtitlesSize(fontSize, callback)`
+
+Choose the subtitles font size with `fontSize`. The default is `1.0`.
+
+## License
+
+MIT. Copyright (c) [Alex](https://github.com/alxhotel)
+

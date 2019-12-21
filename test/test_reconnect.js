@@ -1,11 +1,10 @@
 /**
  * Test for device and connection reuse.
- * Recommended to be run with DEBUG=castv2 to see underlying protocol communication.
  */
 
 var ChromecastAPI = require('../index.js')
 
-var browser = new ChromecastAPI.Browser()
+var client = new ChromecastAPI()
 
 var media = {
   url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
@@ -17,8 +16,8 @@ var media = {
 
 console.log('Searching for devices')
 
-browser.on('deviceOn', function (device) {
-  device.play(media, 0, function () {
+client.on('device', function (device) {
+  device.play(media, function () {
     console.log('Playing in your chromecast')
 
     setTimeout(function () {
