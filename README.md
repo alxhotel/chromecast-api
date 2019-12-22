@@ -5,7 +5,7 @@ chromecast-api
 [![Travis Build](https://travis-ci.org/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
 [![Standard - Javascript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-**chromecast-api** is a NodeJS module for Googlecast's remote playback protocol to play any (compatible) content in the Chromecast device.
+**chromecast-api** is a NodeJS module to play any content in your Chromecast device.
 
 ## Installation
 
@@ -90,7 +90,7 @@ Listen for new devices by passing `callback(device)` in the callback parameter.
 
 With the `Device` object you can now interact with your Chromecast.
 
-This is an example of a attributes of `device`:
+This is an example of the attributes of `device`:
 ```
 {
   name: 'Chromecast-e363e7-3e23e2e-3e2e-23e34e._googlecast._tcp.local', // Unique identifier
@@ -107,19 +107,13 @@ Trigger the mDNS and SSDP search again. Warning: the `device` event will trigger
 
 Use this function to play any media in the chromecast device. Make sure `mediaURL` is accessible by the chromecast.
 
+Pass an attribute `seconds` in the `opts` object to set where to start an audio or video content.
+
 ```
 {
-  seconds: 0
+  seconds: 120 // Start the content at the 2 minute mark
 }
 ```
-
-#### `device.on('finished', callback)`
-
-Event emitted when the media (audio or video) has finished.
-
-#### `device.subtitlesOff(callback)`
-
-Turn the subtitles off.
 
 #### `device.pause(callback)`
 
@@ -132,10 +126,6 @@ Resume the media.
 #### `device.stop(callback)`
 
 Stop playing the media.
-
-#### `device.close(callback)`
-
-Close the connection with the device.
 
 #### `device.seek(seconds, callback)`
 
@@ -156,6 +146,26 @@ Change the subtitles by passing the index of the subtitle you want based on the 
 #### `device.changeSubtitlesSize(fontSize, callback)`
 
 Choose the subtitles font size with `fontSize`. The default is `1.0`.
+
+#### `device.subtitlesOff(callback)`
+
+Turn the subtitles off.
+
+#### `device.close(callback)`
+
+Close the connection with the device.
+
+#### `device.on('connected', callback)`
+
+Event emitted when the client is connected to the device.
+
+#### `device.on('finished', callback)`
+
+Event emitted when the media (audio or video) has finished.
+
+#### `device.on('status', callback)`
+
+Event emitted when the device has a new status: `callback(status)`.
 
 ## Additional information
 
