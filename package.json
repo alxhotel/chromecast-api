@@ -1,6 +1,6 @@
 {
 	"name": "chromecast-api",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Chromecast streaming module all in JS",
 	"main": "index.js",
 	"scripts": {
