@@ -107,11 +107,11 @@ Trigger the mDNS and SSDP search again. Warning: the `device` event will trigger
 
 Use this function to play any media in the chromecast device. Make sure `mediaURL` is accessible by the chromecast.
 
-Pass an attribute `seconds` in the `opts` object to set where to start an audio or video content.
+Pass an attribute `startTime` in the `opts` object to set where to start an audio or video content (in seconds).
 
 ```
 {
-  seconds: 120 // Start the content at the 2 minute mark
+  startTime: 120 // Start the content at the 2 minute mark
 }
 ```
 
