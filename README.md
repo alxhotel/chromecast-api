@@ -2,7 +2,8 @@ chromecast-api
 =================
 
 [![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
-[![Travis Build](https://travis-ci.com/alxhotel/chromecast-api.svg?branch=master)](https://travis-ci.org/alxhotel/chromecast-api)
+[![Build Status](https://img.shields.io/travis/com/alxhotel/chromecast-api/master.svg)](https://travis-ci.com/alxhotel/chromecast-api)
+[![Dependency Status](https://david-dm.org/alxhotel/chromecast-api/status.svg)](https://david-dm.org/alxhotel/chromecast-api)
 [![Standard - Javascript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 **chromecast-api** is a NodeJS module to play any content in your Chromecast device.
