@@ -29,6 +29,11 @@ client.on('device', function (device) {
 })
 ```
 
+## Supported Apps
+
+- Media (video and audio)
+- Youtube videos
+
 ## Subtitles and Cover
 
 To include subtitles and a cover image, use an Object instead of a string in the function `play(mediaObject)`:
