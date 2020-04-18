@@ -81,7 +81,7 @@ client.on('device', function (device) {
   device.play(media, function (err) {
     if (!err) console.log('Playing in your chromecast')
   })
-}
+})
 ```
 
 ## API
