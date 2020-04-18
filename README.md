@@ -105,6 +105,10 @@ This is an example of the attributes of `device`:
 }
 ```
 
+#### `client.devices[...]`
+
+An array of all devices found by the client.
+
 #### `client.update()`
 
 Trigger the mDNS and SSDP search again. Warning: the `device` event will trigger again (it might return the same device).
