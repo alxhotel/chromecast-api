@@ -39,6 +39,8 @@ client.on('device', function (device) {
 
 To include subtitles and a cover image, use an Object instead of a string in the function `play(mediaObject)`:
 
+**Note**: your subtitles must implement CORS.
+
 ```js
 const ChromecastAPI = require('chromecast-api')
 
