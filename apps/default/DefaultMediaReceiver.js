@@ -10,15 +10,21 @@ class DefaultMediaReceiverApp extends DefaultMediaReceiver {
     const options = {}
 
     if (typeof resource === 'string') {
+      let mimeType = mime.getType(resource)
+      if (mimeType === 'application/vnd.apple.mpegurl') mimeType = 'video/mp2t'
+
       media = {
         contentId: resource,
-        contentType: mime.getType(resource) || 'video/mp4'
+        contentType: mimeType || 'video/mp4'
       }
     } else {
       // By default
+      let mimeType = resource.contentType || mime.getType(resource.url)
+      if (mimeType === 'application/vnd.apple.mpegurl') mimeType = 'video/mp2t'
+
       media = {
         contentId: resource.url,
-        contentType: resource.contentType || mime.getType(resource.url) || 'video/mp4'
+        contentType: mimeType || 'video/mp4'
       }
 
       if (resource.subtitles) {
