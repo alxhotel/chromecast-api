@@ -163,6 +163,10 @@ Choose the subtitles font size with `fontSize`. The default is `1.0`.
 
 Turn the subtitles off.
 
+#### `device.getCurrentTime(callback)`
+
+Get the current time of the media playing (in seconds). It's a shortcut for getting the `currentTime` from the status.
+
 #### `device.close(callback)`
 
 Close the connection with the device.
