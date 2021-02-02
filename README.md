@@ -141,7 +141,7 @@ Stop playing the media.
 
 #### `device.seek(seconds, callback)`
 
-Seekk forward `seconds` in time.
+Seek forward `seconds` in time.
 
 #### `device.seekTo(specificTime, callback)`
 
