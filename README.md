@@ -2,7 +2,7 @@ chromecast-api
 =================
 
 [![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
-[![Build Status](https://img.shields.io/travis/com/alxhotel/chromecast-api/master.svg)](https://travis-ci.com/alxhotel/chromecast-api)
+[![Build Status](https://img.shields.io/github/workflow/status/alxhotel/chromecast-api/ci/master)](https://github.com/alxhotel/chromecast-api/actions)
 [![Dependency Status](https://david-dm.org/alxhotel/chromecast-api/status.svg)](https://david-dm.org/alxhotel/chromecast-api)
 [![Standard - Javascript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

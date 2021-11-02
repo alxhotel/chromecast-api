@@ -2,11 +2,11 @@
  * Test for device and connection reuse.
  */
 
-var ChromecastAPI = require('../index.js')
+const ChromecastAPI = require('../index.js')
 
-var client = new ChromecastAPI()
+const client = new ChromecastAPI()
 
-var media = {
+const media = {
   url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
   cover: {
     title: 'Big Bug Bunny',
