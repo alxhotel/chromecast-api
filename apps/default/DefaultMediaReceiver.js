@@ -78,3 +78,5 @@ class DefaultMediaReceiverApp extends DefaultMediaReceiver {
 }
 
 module.exports = DefaultMediaReceiverApp
+
+function noop () {}

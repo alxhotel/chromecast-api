@@ -1,6 +1,6 @@
 const ChromecastAPI = require('../index.js')
 
-var client = new ChromecastAPI()
+const client = new ChromecastAPI()
 
 console.log('Searching for devices')
 
