@@ -1,34 +1,11 @@
 {
   "name": "chromecast-api",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "Chromecast streaming module all in JS",
   "main": "index.js",
   "scripts": {
     "test": "standard"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alxhotel/chromecast-api.git"
-  },
-  "keywords": [
-    "chromecast",
-    "googlecast",
-    "cast",
-    "media",
-    "device",
-    "stream",
-    "streaming",
-    "torrent"
-  ],
-  "author": {
-    "name": "Alex",
-    "email": "alxmorais8@msn.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alxhotel/chromecast-api/issues"
-  },
-  "homepage": "https://github.com/alxhotel/chromecast-api",
   "dependencies": {
     "castv2-client": "1.2.0",
     "debug": "^4.1.1",
@@ -41,5 +18,31 @@
   },
   "devDependencies": {
     "standard": "latest"
-  }
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alxhotel/chromecast-api.git"
+  },
+  "author": {
+    "name": "Alex",
+    "email": "alxmorais8@msn.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/alxhotel/chromecast-api",
+  "bugs": {
+    "url": "https://github.com/alxhotel/chromecast-api/issues"
+  },
+  "keywords": [
+    "chromecast",
+    "googlecast",
+    "cast",
+    "media",
+    "device",
+    "stream",
+    "streaming",
+    "torrent"
+  ]
 }
