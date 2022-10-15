@@ -3,8 +3,9 @@ chromecast-api
 
 [![NPM Version](https://img.shields.io/npm/v/chromecast-api.svg)](https://www.npmjs.com/package/chromecast-api)
 [![Build Status](https://img.shields.io/github/workflow/status/alxhotel/chromecast-api/ci/master)](https://github.com/alxhotel/chromecast-api/actions)
-[![Dependency Status](https://img.shields.io/librariesio/release/npm/chromecast-api)](https://img.shields.io/librariesio/release/npm/chromecast-api)
+[![Dependency Status](https://img.shields.io/librariesio/release/npm/chromecast-api)](https://libraries.io/npm/chromecast-api)
 [![Standard - Javascript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 
 **chromecast-api** is a NodeJS module to play any content in your Chromecast device.
 
