@@ -1,6 +1,6 @@
 {
-  "name": "chromecast-api",
-  "version": "0.4.2",
+  "name": "chromecast-api-chris-lu",
+  "version": "1.0.0",
   "description": "Chromecast streaming module all in JS",
   "main": "index.js",
   "scripts": {
@@ -24,16 +24,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alxhotel/chromecast-api.git"
+    "url": "https://github.com/chris-lu/chromecast-api.git"
   },
   "author": {
     "name": "Alex",
     "email": "alxmorais8@msn.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/alxhotel/chromecast-api",
+  "homepage": "https://github.com/chris-lu/chromecast-api",
   "bugs": {
-    "url": "https://github.com/alxhotel/chromecast-api/issues"
+    "url": "https://github.com/chris-lu/chromecast-api/issues"
   },
   "keywords": [
     "chromecast",
