@@ -13,7 +13,7 @@
     "mime": "^3.0.0",
     "multicast-dns": "^7.2.0",
     "node-ssdp": "^4.0.0",
-    "xml2js": "^0.4.23",
+    "xml2js": "^0.6.2",
     "youtube-remote": "^1.0.0"
   },
   "devDependencies": {
